@@ -1,5 +1,6 @@
 module.exports = class User {
-    constructor(firstName, secondName, email, password, picture, gender, location) {
+    constructor(id, firstName, secondName, email, password, picture, gender, location) {
+        this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;

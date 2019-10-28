@@ -1,4 +1,6 @@
-module.exports= class SportEvent {
+const _ = require('lodash');
+
+module.exports = class SportEvent {
     constructor(date, venue, maxNumber, sport) {
         this.date = date;
         this.venue = venue;
@@ -23,4 +25,10 @@ module.exports= class SportEvent {
         this.waitingList.push(participant);
         console.log("There are not empty spots, you're been added to waiting list");
     }
-}
+    cancelParticipation(participant) {
+        let index = this.participants.findIndex(el => _.isEqual(el, participant));
+        if (index !== -1) {
+            this.participants.splice(index, 1);
+        }
+    }
+};
