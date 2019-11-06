@@ -16,4 +16,7 @@ module.exports = class User {
     addInterest(sport) {
         this.sports.push(sport);
     }
+    static create ({id, firstName, secondName, email, password, picture, gender, location}){
+        return new User (id, firstName, secondName, email, password, picture, gender, location)
+    }
 }

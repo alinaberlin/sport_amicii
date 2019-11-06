@@ -10,4 +10,7 @@ module.exports=class Venue {
     addSport(sport){
         this.sports.push(sport)
     }
+    static create({name, address, sports}){
+    return new Venue(name, address, sports)
+    }
 }

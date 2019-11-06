@@ -31,4 +31,8 @@ module.exports = class SportEvent {
             this.participants.splice(index, 1);
         }
     }
+    static create({date, venue, maxNumber, sport}){
+        return new SportEvent (date, venue, maxNumber, sport)
+
+    }
 };
