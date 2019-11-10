@@ -18,10 +18,12 @@ module.exports = class Service {
 
                     return reject(err);
                 }
-                //const parseData = Flatted.parse(file);
-                const parseData = JSON.parse(file);
-                const items = parseData.map(this.model.create);
-
+                const parseData = Flatted.parse(file);
+                //const parseData = JSON.parse(file);
+                let items = [];
+                if (parseData) {
+                    items = parseData.map(this.model.create);
+                }
                 resolve(items);
             });
         });
@@ -58,7 +60,7 @@ module.exports = class Service {
 
     async saveAll(items) {
         return new Promise((resolve, reject) => {
-            fs.writeFile(this.dbPath, JSON.stringify(items), (err, file) => {
+            fs.writeFile(this.dbPath, Flatted.stringify(items), (err, file) => {
                 if (err) return reject(err);
 
                 resolve();

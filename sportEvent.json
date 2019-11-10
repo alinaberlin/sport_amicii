@@ -1,1 +1,1 @@
-[{"date":"2019-11-10T18:55:02.428Z","venue":{"name":"prenz","address":"Joseph 1","sports":[{"type":"running","minAttendee":1,"id":1}],"id":1},"maxNumber":2,"sport":{"type":"running","minAttendee":1,"id":1},"waitingList":[],"participants":[],"id":1}]
+[["1","2","3"],{},{},{"date":"4","venue":"5","maxNumber":2,"sport":"6","waitingList":"7","participants":"8","id":1},"2019-11-10T19:08:06.216Z",{"name":"9","address":"10","sports":"11","id":1},{"type":"12","minAttendee":1,"id":1},[],[],"prenz","Joseph 1",["6"],"running"]

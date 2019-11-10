@@ -1,11 +1,5 @@
-const UserService = require("./services/user-service");
-const VenueService = require("./services/venue-service");
-const SportEventService = require("./services/sportEvent-service");
-const SportService = require("./services/sport-service");
-const User = require("./models/user");
-const Venue = require("./models/venue");
-const Sport = require("./models/sport");
-const SportEvent = require("./models/sportEvent");
+const { UserService, SportService, VenueService, SportEventService } = require("./services");
+const { User, Venue, Sport, SportEvent } = require("./models");
 
 const main = async () => {
     const user = await UserService.add(User.create({ firstName: "Arnold", secondName: "Swarz", email: "aa@gmail.com", password: "password" }));
