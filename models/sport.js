@@ -3,4 +3,8 @@ module.exports =class Sport {
         this.type = type;
         this.minAttendee = minAttendee;
     }
+
+    static create({type, minAttendee}) {
+        return new Sport(type, minAttendee)
+    }
 }

@@ -1,6 +1,5 @@
 module.exports = class User {
-    constructor(id, firstName, secondName, email, password, picture, gender, location) {
-        this.id = id;
+    constructor(firstName, secondName, email, password, picture, gender, location) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
@@ -16,7 +15,7 @@ module.exports = class User {
     addInterest(sport) {
         this.sports.push(sport);
     }
-    static create ({id, firstName, secondName, email, password, picture, gender, location}){
-        return new User (id, firstName, secondName, email, password, picture, gender, location)
+    static create({ firstName, secondName, email, password, picture, gender, location }) {
+        return new User(firstName, secondName, email, password, picture, gender, location);
     }
-}
+};
