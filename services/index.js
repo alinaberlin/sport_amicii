@@ -2,7 +2,7 @@
 
 const UserService = require("./user-service");
 const VenueService = require("./venue-service");
-const SportEventService = require("./sportEvent-service");
+const SportEventService = require("./sport-event-service");
 const SportService = require("./sport-service");
 
 module.exports = {
