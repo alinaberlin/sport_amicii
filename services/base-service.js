@@ -54,8 +54,7 @@ module.exports = class Service {
 
     async find(itemId = 1) {
         const allItems = await this.findAll();
-
-        return allItems.find(p => p.id == itemId);
+        return allItems.find(p => p.id == itemId)[0];
     }
 
     async saveAll(items) {

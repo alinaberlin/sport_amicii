@@ -1,13 +1,14 @@
-const _ = require('lodash');
+const _ = require("lodash");
 
 module.exports = class SportEvent {
-    constructor(date, venue, maxNumber, sport) {
+    constructor(date, venue, maxNumber, sport, id) {
         this.date = date;
         this.venue = venue;
         this.maxNumber = maxNumber;
         this.sport = sport;
         this.waitingList = [];
         this.participants = [];
+        this.id = id;
     }
     printParticipantsNames() {
         this.participants.forEach(p => p.printName());
@@ -31,8 +32,7 @@ module.exports = class SportEvent {
             this.participants.splice(index, 1);
         }
     }
-    static create({date, venue, maxNumber, sport}){
-        return new SportEvent (date, venue, maxNumber, sport)
-
+    static create({ date, venue, maxNumber, sport, id }) {
+        return new SportEvent(date, venue, maxNumber, sport, id);
     }
 };
