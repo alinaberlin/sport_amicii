@@ -34,5 +34,7 @@ module.exports = class SportEvent {
     }
     static create({ date, venue, maxNumber, sport, id }) {
         return new SportEvent(date, venue, maxNumber, sport, id);
+        
+
     }
 };
