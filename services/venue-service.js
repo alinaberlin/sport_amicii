@@ -1,10 +1,8 @@
-const BaseService = require('./base-service')
-const VenueModel = require('../models/user')
+const BaseService = require("./base-service");
+const VenueModel = require("../models/user");
 
-class  VenueService extends BaseService {
-    constructor() {
-        super(VenueModel, `${__dirname}/../venue.json`)
-    }
+class VenueService extends BaseService {
+    model = VenueModel;
 }
 
-module.exports = new VenueService()
+module.exports = new VenueService();

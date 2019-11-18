@@ -1,40 +1,29 @@
-const _ = require("lodash");
+const mongoose = require("mongoose");
 
-module.exports = class SportEvent {
-    constructor(date, venue, maxNumber, sport, id) {
-        this.date = date;
-        this.venue = venue;
-        this.maxNumber = maxNumber;
-        this.sport = sport;
-        this.waitingList = [];
-        this.participants = [];
-        this.id = id;
-    }
-    printParticipantsNames() {
-        this.participants.forEach(p => p.printName());
-    }
-    addParticipants(participant) {
-        if (!participant.sports.includes(this.sport)) {
-            console.log("Sport of this event is not in your interes ");
-            return;
+const SportEventSchema = new mongoose.Schema({
+    date: Date,
+    maxNumber: Number,
+    venue: { type: mongoose.SchemaTypes.ObjectId, ref: "Venue" },
+    sport: { type: mongoose.SchemaTypes.ObjectId, ref: "Sport" },
+    participants: [
+        {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: "User",
+            autopopulate: {
+                maxDepth: 1
+            }
         }
-        if (this.participants.length < this.maxNumber) {
-            this.participants.push(participant);
-            console.log(`Welcome ` + participant.firstName);
-            return;
+    ],
+    waitingList: [
+        {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: "User",
+            autopopulate: {
+                maxDepth: 1
+            }
         }
-        this.waitingList.push(participant);
-        console.log("There are not empty spots, you're been added to waiting list");
-    }
-    cancelParticipation(participant) {
-        let index = this.participants.findIndex(el => _.isEqual(el, participant));
-        if (index !== -1) {
-            this.participants.splice(index, 1);
-        }
-    }
-    static create({ date, venue, maxNumber, sport, id }) {
-        return new SportEvent(date, venue, maxNumber, sport, id);
-        
+    ]
+});
+const SportEventModel = mongoose.model("SportEvent", SportEventSchema);
 
-    }
-};
+module.exports = SportEventModel;

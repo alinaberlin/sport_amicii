@@ -1,11 +1,9 @@
-module.exports = class Sport {
-    constructor(type, minAttendee, id) {
-        this.type = type;
-        this.minAttendee = minAttendee;
-        this.id = id;
-    }
+const mongoose = require("mongoose");
 
-    static create({ type, minAttendee, id }) {
-        return new Sport(type, minAttendee, id);
-    }
-};
+const SportSchema = new mongoose.Schema({
+    type: String,
+    minAttendee: Number
+});
+const SportModel = mongoose.model("Sport", SportSchema);
+
+module.exports = SportModel;

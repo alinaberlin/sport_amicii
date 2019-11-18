@@ -20,6 +20,7 @@ app.use('/event', eventRouter)
 app.get("/", (req, res) => {
     res.render("index");
 });
+require('./db/mongo-connection')
 // //rest for user
 // app.get("/user/all", async (req, res) => {
 //     const users = await UserService.findAll();
