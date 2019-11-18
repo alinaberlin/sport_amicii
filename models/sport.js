@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const SportSchema = new mongoose.Schema({
-    type: String,
+    name: String,
     minAttendee: Number
 });
 const SportModel = mongoose.model("Sport", SportSchema);
