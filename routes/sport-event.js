@@ -15,4 +15,15 @@ router.post("/", async (req, res) => {
     res.send(event);
 });
 
+router.get("/:id", async (req, res) => {
+    const id = req.params.id;
+    const event = await SportEventService.find(id);
+    res.send(event);
+});
+
+router.delete("/:id", async (req, res) => {
+    await SportEventService.del(req.params.id);
+    res.send("ok");
+});
+
 module.exports = router;
