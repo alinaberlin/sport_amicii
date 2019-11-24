@@ -1,5 +1,5 @@
 const BaseService = require("./base-service");
-const VenueModel = require("../models/user");
+const VenueModel = require("../models/venue");
 
 class VenueService extends BaseService {
     model = VenueModel;
