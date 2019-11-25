@@ -16,7 +16,7 @@ test("Create new sport", async t => {
     // checking for server response status success
     t.is(res.status, 200);
 
-    // comparing the created user's data
+    // comparing the created sport's data
     t.is(res.body.name, sportToCreate.name);
     t.is(res.body.minAttendee, sportToCreate.minAttendee);
 });
@@ -27,7 +27,7 @@ test("Fetch a sport", async t => {
         minAttendee: 6
     };
 
-    // first create a person
+    // first create a sport
     const sportCreated = (
         await request(app)
             .post("/user")
@@ -41,7 +41,7 @@ test("Fetch a sport", async t => {
     t.is(fetchRes.status, 200);
 
     // this endpoint is responding with the user detail JSON data
-    // compare the fetched user with created user
+    // compare the fetched user with created sport
     const sportFetched = fetchRes.body;
     t.deepEqual(sportFetched, sportCreated);
 });
@@ -49,7 +49,7 @@ test("Fetch a sport", async t => {
 test("Delete a sport", async t => {
     t.plan(2);
 
-    // first create a person
+    // first create a sport
     const sportCreate = {
         name: "running",
         minAttendee: 2
@@ -60,7 +60,7 @@ test("Delete a sport", async t => {
             .send(sportCreate)
     ).body;
 
-    // delete the person
+    // delete the sport
     const deleteRes = await request(app).delete(`/sport/${runningSportCreate._id}`);
     // checking for server response status success
     t.is(deleteRes.status, 200);

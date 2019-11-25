@@ -41,14 +41,14 @@ test("Fetch a user", async t => {
         sports: []
     };
 
-    // first create a person
+    // first create a user
     const aureUserCreated = (
         await request(app)
             .post("/user")
             .send(userForCreate)
     ).body;
 
-    // fetch the person we just created
+    // fetch the user we just created
     const fetchRes = await request(app).get(`/user/${aureUserCreated._id}`);
     // checking for server response status success
     // this endpoint is rendering into HTML
@@ -63,7 +63,7 @@ test("Fetch a user", async t => {
 test("Delete a user", async t => {
     t.plan(2);
 
-    // first create a person
+    // first create a user
     const userCreate = {
         firstName: "Mihri",
         secondName: "Minaz",
@@ -79,7 +79,7 @@ test("Delete a user", async t => {
             .send(userCreate)
     ).body;
 
-    // delete the person
+    // delete the user
     const deleteRes = await request(app).delete(`/user/${mihriUserCreate._id}`);
     // checking for server response status success
     t.is(deleteRes.status, 200);

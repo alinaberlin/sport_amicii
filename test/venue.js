@@ -43,7 +43,7 @@ test("Fetch a venue", async t => {
     t.is(fetchRes.status, 200);
 
     // this endpoint is responding with the user detail JSON data
-    // compare the fetched user with created user
+    // compare the fetched venue with created venue
     const venueFetched = fetchRes.body;
     t.deepEqual(venueFetched, venueCreated);
 });
