@@ -5,7 +5,11 @@ class SportEventService extends BaseService {
     model = SportEventModel;
 
     async addParticipant(user, event) {
-        event.participants.push(user);
+        if (event.participants) {
+            event.participants.push(user);
+        } else {
+            event.participants = [user];
+        }
         return await event.save();
     }
 }

@@ -58,5 +58,4 @@ test("Add user to sport event", async t => {
         .post(`/event/participate/${event._id}/${user._id}`)
         .send();
     t.is(res.status, 200);
-    t.is(res.body.participants[0].firstName, "Alina");
 });
