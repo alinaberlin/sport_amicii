@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const SportEventService = require("../services/sport-event-service");
+const UserService = require("../services/user-service");
 
 router.post("/participate/:eventId/:userId", async (req, res) => {
     const user = await UserService.find(req.params.userId);
