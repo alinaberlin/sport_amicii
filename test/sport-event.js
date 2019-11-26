@@ -188,5 +188,65 @@ test("Add 2 users to sport event", async t => {
         .send(sportEvent);
     t.is(res2.status, 200);
     t.deepEqual(res2.body.maxNumber, sportEvent.maxNumber);
- })
- 
+})
+
+test("Accepting criteria for maximum attendee", async t => {
+    const sport = await SportService.add({
+        name: "tennis",
+        minAttendee: 2
+    });
+    const venue = await VenueService.add({
+        name: "Olimpia Stadion",
+        address: "Olympischer Platz 3, 14053 Berlin",
+        sports: [sport]
+    });
+    //creating first 3 users req for this test
+    const user = await UserService.add({
+        firstName: "Alina",
+        secondName: "Ghetler",
+        email: "alina.ghetler@gmail.com",
+        password: "dumy",
+        gender: "female",
+        location: "Berlin",
+        sports: [sport]
+    });
+    const user2 = await UserService.add({
+        firstName: "Alinus",
+        secondName: "Ghetler",
+        email: "alinus.ghetler@gmail.com",
+        password: "dumy",
+        gender: "female",
+        location: "Berlin",
+        sports: [sport]
+    });
+    const user3 = await UserService.add({
+        firstName: "Alinus",
+        secondName: "Ghetler",
+        email: "alinus.ghetler@gmail.com",
+        password: "dumy",
+        gender: "female",
+        location: "Berlin",
+        sports: [sport]
+    });
+    const sportEvent = {
+        date: new Date(),
+        maxNumber: 2,
+        venue: venue,
+        sport: sport
+    };
+    const event = await SportEventService.add(sportEvent);
+    const res = await request(app)
+        .post(`/event/participate/${event._id}/${user._id}`)
+        .send(sportEvent);
+    const res2 = await request(app)
+        .post(`/event/participate/${event._id}/${user2._id}`)
+        .send(sportEvent);
+    const res3 = await request(app)
+        .post(`/event/participate/${event._id}/${user3._id}`)
+        .send(sportEvent);
+
+    t.is(res.status, 200);
+    t.is(res2.status, 200);
+    t.is(res3.status, 200);
+    t.deepEqual(res2.body.maxNumber, sportEvent.maxNumber);
+})
