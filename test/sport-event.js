@@ -188,7 +188,7 @@ test("Add 2 users to sport event", async t => {
         .send(sportEvent);
     t.is(res2.status, 200);
     t.deepEqual(res2.body.maxNumber, sportEvent.maxNumber);
-})
+});
 
 test("Accepting criteria for maximum attendee", async t => {
     const sport = await SportService.add({
@@ -249,4 +249,29 @@ test("Accepting criteria for maximum attendee", async t => {
     t.is(res2.status, 200);
     t.is(res3.status, 200);
     t.deepEqual(res2.body.maxNumber, sportEvent.maxNumber);
-})
+});
+
+test("Get a port event by id", async t => {
+    const sport = await SportService.add({
+        name: "fotball",
+        minAttendee: 6
+    });
+    const venue = await VenueService.add({
+        name: "Olimpia Stadion",
+        address: "Olympischer Platz 3, 14053 Berlin",
+        sports: [sport]
+    });
+    const sportEvent = {
+        date: new Date(),
+        maxNumber: 10,
+        venue: venue,
+        sport: sport
+    };
+    const event = (
+        await request(app)
+            .post("/event")
+            .send(sportEvent)
+    ).body;
+    const res = await request(app).get(`/event/${event._id}`);
+    t.is(res.status, 200);
+});

@@ -30,12 +30,12 @@ test("Fetch a sport", async t => {
     // first create a sport
     const sportCreated = (
         await request(app)
-            .post("/user")
+            .post("/sport")
             .send(sportToCreate)
     ).body;
 
     // fetch the person we just created
-    const fetchRes = await request(app).get(`/user/${sportCreated._id}`);
+    const fetchRes = await request(app).get(`/sport/${sportCreated._id}`);
     // checking for server response status success
     // this endpoint is rendering into HTML
     t.is(fetchRes.status, 200);
