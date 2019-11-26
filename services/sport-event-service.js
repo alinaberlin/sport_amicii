@@ -1,5 +1,5 @@
 const BaseService = require("./base-service");
-const SportEventModel = require("../models/sport");
+const SportEventModel = require("../models/sportEvent");
 
 class SportEventService extends BaseService {
     model = SportEventModel;
