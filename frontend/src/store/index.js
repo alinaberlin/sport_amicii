@@ -8,7 +8,8 @@ export default new Vuex.Store({
         counter: 0,
         users: [],
         user: {},
-        sports: []
+        sports: [],
+        venues:[],
     },
     mutations: {
         SET_COUNTER(state, newCount) {
@@ -25,6 +26,9 @@ export default new Vuex.Store({
         },
         SET_SPORT(state, data) {
             state.sport = data;
+        },
+        SET_VENUES(state, data){
+            state.venues=data
         }
     },
     actions: {
@@ -46,8 +50,12 @@ export default new Vuex.Store({
             commit("SET_SPORTS", result.data);
         },
         async fetchSport({ commit }, id) {
-            const result = await axios.get(`http://localhost:3000/sport/${id}`);
+            const result = await axios.get(`http://localhost:3000/sport/${id}json`);
             commit("SET_SPORT", result.data);
+        },
+        async fetchVenues({ commit }) {
+            const result = await axios.get(`http://localhost:3000/venue/all/json`);
+            commit("SET_VENUES", result.data);
         }
     },
     modules: {}

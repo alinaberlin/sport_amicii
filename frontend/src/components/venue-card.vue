@@ -1,10 +1,10 @@
 <script>
 export default {
-    name: "SportCard",
-    props: ["sport"],
+    name: "VenueCard",
+    props: ["venue"],
     computed: {
-        sportUrl() {
-            return `sport/${this.sport._id}`;
+        venueUrl() {
+            return `venue/${this.venue._id}`;
         }
     }
 };
@@ -12,9 +12,9 @@ export default {
 
 <template lang="pug">
  article.card
-  img(:src="`https://picsum.photos/300/200?random=${sport._id}`" alt="sport picture")
+  img(:src="`https://picsum.photos/300/200?random=${venue._id}`" alt="venue picture")
   h2.card-title 
-    router-link(:to="sportUrl") {{sport.name}}
+    router-link(:to="venueUrl") {{venue.name}}
 </template>
 
 <style scoped>
