@@ -4,3 +4,4 @@ block content
         h1 The number of users is #{users.length}
         each user in users
             h2 #{user.firstName}
+        pre #{JSON.stringify(users,null, 4)}

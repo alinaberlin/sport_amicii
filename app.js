@@ -1,11 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors")
 const userRouter = require("./routes/user");
 const sportRouter = require("./routes/sport");
 const venueRouter = require("./routes/venue");
 const eventRouter = require("./routes/sport-event");
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.set("view engine", "pug");
 app.use("/user", userRouter);

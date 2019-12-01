@@ -8,7 +8,17 @@ router.get("/all", async (req, res) => {
     res.render("user", { users: users });
 });
 
+router.get("/all/json", async (req, res) => {
+    const users = await UserService.findAll();
+    res.send(users);
+});
+
 router.get("/:id", async (req, res) => {
+    const id = req.params.id;
+    const user = await UserService.find(id);
+    res.send(user);
+});
+router.get("/:id/json", async (req, res) => {
     const id = req.params.id;
     const user = await UserService.find(id);
     res.send(user);
