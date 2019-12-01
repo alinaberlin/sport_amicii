@@ -7,7 +7,8 @@ export default new Vuex.Store({
     state: {
         counter: 0,
         users: [],
-        user: {}
+        user: {},
+        sports: []
     },
     mutations: {
         SET_COUNTER(state, newCount) {
@@ -18,6 +19,12 @@ export default new Vuex.Store({
         },
         SET_USER(state, data) {
             state.user = data;
+        },
+        SET_SPORTS(state, data) {
+            state.sports = data;
+        },
+        SET_SPORT(state, data) {
+            state.sport = data;
         }
     },
     actions: {
@@ -33,6 +40,14 @@ export default new Vuex.Store({
             console.log("Fetch user from backed", id);
             const result = await axios.get(`http://localhost:3000/user/${id}/json`);
             commit("SET_USER", result.data);
+        },
+        async fetchSports({ commit }) {
+            const result = await axios.get("http://localhost:3000/sport/all/json");
+            commit("SET_SPORTS", result.data);
+        },
+        async fetchSport({ commit }, id) {
+            const result = await axios.get(`http://localhost:3000/sport/${id}`);
+            commit("SET_SPORT", result.data);
         }
     },
     modules: {}

@@ -12,6 +12,11 @@ router.get("/all", async (req, res) => {
     res.render("sport", { sports: sports });
 });
 
+router.get("/all/json", async (req, res) => {
+    const sports = await SportService.findAll();
+    res.send(sports);
+});
+
 router.get("/:id", async (req, res) => {
     const id = req.params.id;
     const sport = await SportService.find(id);

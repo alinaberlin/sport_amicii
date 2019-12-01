@@ -1,18 +1,22 @@
 <script>
 // @ is an alias to /src
 import UserCard from "@/components/user-card.vue";
+import SportCard from "@/components/sport-card.vue";
+
 import { mapState, mapActions } from "vuex";
 
 export default {
     name: "home",
     components: {
         UserCard
+        
     },
     computed: {
-        ...mapState(["users", "counter"])
+        ...mapState(["users", "counter"]),
     },
     methods: {
-        ...mapActions(["fetchUsers", "incrementCounter"])
+        ...mapActions(["fetchUsers", "incrementCounter"]),
+
     },
     created() {
         this.fetchUsers();

@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import User from "../views/User.vue";
+import Sports from "../views/Sports.vue";
+import Sport from "../views/Sport.vue";
 
 Vue.use(VueRouter);
 
@@ -15,6 +17,16 @@ const routes = [
         path: "/user/:id",
         name: "user",
         component: User
+    },
+    {
+        path: "/sport/",
+        name: "sport",
+        component: Sports
+    },
+    {
+        path: "/sport/:id",
+        name: "sport",
+        component: Sport
     },
     {
         path: "/about",
