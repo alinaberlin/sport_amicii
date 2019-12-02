@@ -23,7 +23,7 @@ export default {
 <template lang="pug">
 main
   section
-        sport-card(v-for="sport in sports", :sport= 'sport') 
+    sport-card(v-for="sport in sports", :sport= 'sport') 
 </template>
 
 <style scoped>

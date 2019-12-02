@@ -9,13 +9,13 @@ export default {
     VenueCard
   },
   computed: {
-    ...mapState(["venues"])
+    ...mapState(["venue"])
   },
   methods: {
-    ...mapActions(["fetchVenues"])
+    ...mapActions(["fetchVenue"])
   },
   created() {
-    this.fetchVenues();
+    this.fetchVenue(this.$route.params.id);
   }
 };
 </script>
@@ -23,9 +23,8 @@ export default {
 <template lang="pug">
 main
   section
-    venue-card(v-for="venue in venues", :venue= 'venue') 
+  venue-card(:venue="venue")
 </template>
 
 <style scoped>
 </style>
-

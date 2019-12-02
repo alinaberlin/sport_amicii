@@ -5,6 +5,7 @@ import User from "../views/User.vue";
 import Sports from "../views/Sports.vue";
 import Sport from "../views/Sport.vue";
 import Venues from "../views/Venues.vue"
+import Venue from "../views/Venue.vue"
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
         path: "/venue/",
         name: "venue",
         component: Venues
+    },
+    {
+        path: "/venue/:id",
+        name: "venue",
+        component: Venue
     },
     {
         path: "/about",

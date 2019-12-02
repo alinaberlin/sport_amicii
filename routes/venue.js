@@ -22,6 +22,11 @@ router.get("/:id", async (req, res) => {
     const venue = await VenueService.find(id);
     res.send(venue);
 });
+router.get("/:id/json", async (req, res) => {
+    const id = req.params.id;
+    const venue = await VenueService.find(id);
+    res.send(venue);
+});
 router.delete("/:id", async (req, res) => {
     await VenueService.del(req.params.id);
     res.send("ok");
