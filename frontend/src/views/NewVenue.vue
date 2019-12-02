@@ -3,7 +3,7 @@ import { mapState, mapActions } from "vuex";
 export default {
   name: "add-venue",
   computed: {
-    ...mapState(["venueDetails"])
+    ...mapState(["venueDetails", "sports"])
   },
   data() {
     return {
@@ -12,11 +12,14 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["createVenue"]),
+    ...mapActions(["createVenue", "fetchSports"]),
     saveVenue() {
-      const { name, address } = this;
-      this.createVenue({ name, address });
+      const { name, address, sports } = this;
+      this.createVenue({ name, address, sports });
     }
+  },
+  created() {
+    this.fetchSports();
   }
 };
 </script>
@@ -26,8 +29,12 @@ main
   h2 Add a new venue
   p Venue name
   input(type="text" v-model="name" placeholder="venue name")
-  p minim atendee
+  p Address
   input(type="text" v-model="address" placeholder="address")
+  p Sports
+  select(multiple v-model="sports")  
+     option(v-for="sport in sports", :value= 'sport._id') {{sport.name}}
+  p
   button.post-venue-button(@click="saveVenue()") Add new venue
   div
 </template>
