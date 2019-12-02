@@ -24,10 +24,12 @@ router.get("/:id/json", async (req, res) => {
     res.send(user);
 });
 router.post("/", async (req, res) => {
+    console.log("New user data is", req.body);
     const user = await UserService.add(req.body);
     //console.log(req.body)
     res.send(user);
 });
+
 router.delete("/:id", async (req, res) => {
     await UserService.del(req.params.id);
     res.send("ok");
