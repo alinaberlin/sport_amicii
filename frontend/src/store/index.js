@@ -13,7 +13,8 @@ export default new Vuex.Store({
         venues: [],
         venue: {},
         userDetails: {},
-        sportDetails: {}
+        sportDetails: {},
+        venueDetails:{}
     },
     mutations: {
         SET_COUNTER(state, newCount) {
@@ -42,6 +43,9 @@ export default new Vuex.Store({
         },
         SAVE_NEW_SPORT(state, data) {
             state.sportDetails = data;
+        },
+        SAVE_NEW_VENUE(state, data) {
+            state.venueDetails = data;
         }
     },
     actions: {
@@ -83,6 +87,11 @@ export default new Vuex.Store({
             this.state.sportDetails = sportDetails;
             const result = await axios.post("http://localhost:3000/sport", this.state.sportDetails);
             commit("SAVE_NEW_SPORT", result.data);
+        },
+        async createVenue({ commit }, venueDetails) {
+            this.state.venueDetails = venueDetails;
+            const result = await axios.post("http://localhost:3000/venue", this.state.venueDetails);
+            commit("SAVE_NEW_VENUE", result.data);
         }
     },
     modules: {}

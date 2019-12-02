@@ -8,6 +8,7 @@ import Venues from "../views/Venues.vue";
 import Venue from "../views/Venue.vue";
 import Registration from "../views/Registration.vue";
 import NewSport from "../views/NewSport.vue";
+import NewVenue from "../views/NewVenue.vue";
 
 Vue.use(VueRouter);
 
@@ -51,6 +52,11 @@ const routes = [
         path: "/add/sport",
         name: "add-sport",
         component: NewSport
+    },
+    {
+        path: "/add/venue",
+        name: "add-venue",
+        component: NewVenue
     },
     {
         path: "/about",
