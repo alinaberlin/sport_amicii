@@ -12,7 +12,8 @@ export default new Vuex.Store({
         sport: {},
         venues: [],
         venue: {},
-        userDetails: {}
+        userDetails: {},
+        sportDetails: {}
     },
     mutations: {
         SET_COUNTER(state, newCount) {
@@ -38,6 +39,9 @@ export default new Vuex.Store({
         },
         SAVE_NEW_USER(state, data) {
             state.userDetails = data;
+        },
+        SAVE_NEW_SPORT(state, data) {
+            state.sportDetails = data;
         }
     },
     actions: {
@@ -59,7 +63,7 @@ export default new Vuex.Store({
             commit("SET_SPORTS", result.data);
         },
         async fetchSport({ commit }, id) {
-            const result = await axios.get(`http://localhost:3000/sport/${id}json`);
+            const result = await axios.get(`http://localhost:3000/sport/${id}/json`);
             commit("SET_SPORT", result.data);
         },
         async fetchVenues({ commit }) {
@@ -73,7 +77,12 @@ export default new Vuex.Store({
         async createUser({ commit }, userDetails) {
             this.state.userDetails = userDetails;
             const result = await axios.post("http://localhost:3000/user", this.state.userDetails);
-            commit("SAVE_NEW_USER", result.res);
+            commit("SAVE_NEW_USER", result.data);
+        },
+        async createSport({ commit }, sportDetails) {
+            this.state.sportDetails = sportDetails;
+            const result = await axios.post("http://localhost:3000/sport", this.state.sportDetails);
+            commit("SAVE_NEW_SPORT", result.data);
         }
     },
     modules: {}

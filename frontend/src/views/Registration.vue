@@ -1,28 +1,27 @@
 <script>
 // @ is an alias to /src
 import { mapState, mapActions } from "vuex";
-import axios from "axios";
 export default {
-  name: "registration",
-  computed: {
-    ...mapState(["userDetails"])
-  },
-  data() {
-    return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      location: ""
-    };
-  },
-  methods: {
-    ...mapActions(["createUser"]),
-    saveUser() {
-      const { firstName, lastName, email, password, location } = this;
-      this.createUser({ firstName, lastName, email, password, location });
+    name: "registration",
+    computed: {
+        ...mapState(["userDetails"])
+    },
+    data() {
+        return {
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            location: ""
+        };
+    },
+    methods: {
+        ...mapActions(["createUser"]),
+        saveUser() {
+            const { firstName, lastName, email, password, location } = this;
+            this.createUser({ firstName, lastName, email, password, location });
+        }
     }
-  }
 };
 </script>
 

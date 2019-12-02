@@ -7,6 +7,7 @@ import Sport from "../views/Sport.vue";
 import Venues from "../views/Venues.vue";
 import Venue from "../views/Venue.vue";
 import Registration from "../views/Registration.vue";
+import NewSport from "../views/NewSport.vue";
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ const routes = [
         path: "/registration",
         name: "registration",
         component: Registration
+    },
+    {
+        path: "/add/sport",
+        name: "add-sport",
+        component: NewSport
     },
     {
         path: "/about",
