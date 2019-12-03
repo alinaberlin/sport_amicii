@@ -4,7 +4,7 @@ import { mapState, mapActions } from "vuex";
 export default {
     name: "registration",
     computed: {
-        ...mapState(["userDetails"])
+        ...mapState(["userDetails", "sports"])
     },
     data() {
         return {
@@ -12,15 +12,19 @@ export default {
             lastName: "",
             email: "",
             password: "",
-            location: ""
+            location: "",
+            selectedSports:[]
         };
     },
     methods: {
-        ...mapActions(["createUser"]),
+        ...mapActions(["createUser", "fetchSports"]),
         saveUser() {
-            const { firstName, lastName, email, password, location } = this;
-            this.createUser({ firstName, lastName, email, password, location });
+            const { firstName, lastName, email, password, location,selectedSports } = this;
+            this.createUser({ firstName, lastName, email, password, location,selectedSports });
         }
+    },
+    created() {
+        this.fetchSports();
     }
 };
 </script>
@@ -38,6 +42,9 @@ main
   input(type="text" v-model="location" placeholder="location")
   p Password
   input(type="password" v-model="password" placeholder="password")
+  p
+  select(multiple v-model="selectedSports")  
+     option(v-for="sport in sports", :value= 'sport._id') {{sport.name}}
   p
   button.post-user-button(@click="saveUser()") Register
   div

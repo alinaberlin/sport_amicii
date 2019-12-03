@@ -8,14 +8,15 @@ export default {
   data() {
     return {
       name: "",
-      address: ""
+      address: "",
+      selectedSports: []
     };
   },
   methods: {
     ...mapActions(["createVenue", "fetchSports"]),
     saveVenue() {
-      const { name, address, sports } = this;
-      this.createVenue({ name, address, sports });
+      const { name, address, selectedSports } = this;
+      this.createVenue({ name, address, sports: selectedSports });
     }
   },
   created() {
@@ -32,9 +33,9 @@ main
   p Address
   input(type="text" v-model="address" placeholder="address")
   p Sports
-  select(multiple v-model="sports")  
+  select(multiple v-model="selectedSports")  
      option(v-for="sport in sports", :value= 'sport._id') {{sport.name}}
-  p
+  p   
   button.post-venue-button(@click="saveVenue()") Add new venue
   div
 </template>
