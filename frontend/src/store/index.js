@@ -3,6 +3,8 @@ import Vuex from "vuex";
 import axios from "axios";
 Vue.use(Vuex);
 
+const apiUrl = process.env.VUE_APP_API_URL || "http://localhost:3000";
+
 export default new Vuex.Store({
     state: {
         counter: 0,
@@ -14,7 +16,7 @@ export default new Vuex.Store({
         venue: {},
         userDetails: {},
         sportDetails: {},
-        venueDetails:{}
+        venueDetails: {}
     },
     mutations: {
         SET_COUNTER(state, newCount) {
@@ -54,38 +56,38 @@ export default new Vuex.Store({
             commit("SET_COUNTER", newCount);
         },
         async fetchUsers({ commit }) {
-            const result = await axios.get("http://localhost:3000/user/all/json");
+            const result = await axios.get(`${apiUrl}/user/all/json`);
             commit("SET_USERS", result.data);
         },
         async fetchUser({ commit }, id) {
             console.log("Fetch user from backed", id);
-            const result = await axios.get(`http://localhost:3000/user/${id}/json`);
+            const result = await axios.get(`${apiUrl}/user/${id}/json`);
             commit("SET_USER", result.data);
         },
         async fetchSports({ commit }) {
-            const result = await axios.get("http://localhost:3000/sport/all/json");
+            const result = await axios.get(`${apiUrl}/sport/all/json`);
             commit("SET_SPORTS", result.data);
         },
         async fetchSport({ commit }, id) {
-            const result = await axios.get(`http://localhost:3000/sport/${id}/json`);
+            const result = await axios.get(`${apiUrl}/sport/${id}/json`);
             commit("SET_SPORT", result.data);
         },
         async fetchVenues({ commit }) {
-            const result = await axios.get(`http://localhost:3000/venue/all/json`);
+            const result = await axios.get(`${apiUrl}/venue/all/json`);
             commit("SET_VENUES", result.data);
         },
         async fetchVenue({ commit }, id) {
-            const result = await axios.get(`http://localhost:3000/venue/${id}/json`);
+            const result = await axios.get(`${apiUrl}/venue/${id}/json`);
             commit("SET_VENUE", result.data);
         },
         async createUser({ commit }, userDetails) {
             this.state.userDetails = userDetails;
-            const result = await axios.post("http://localhost:3000/user", this.state.userDetails);
+            const result = await axios.post(`${apiUrl}/user`, this.state.userDetails);
             commit("SAVE_NEW_USER", result.data);
         },
         async createSport({ commit }, sportDetails) {
             this.state.sportDetails = sportDetails;
-            const result = await axios.post("http://localhost:3000/sport", this.state.sportDetails);
+            const result = await axios.post(`${apiUrl}/sport`, this.state.sportDetails);
             commit("SAVE_NEW_SPORT", result.data);
         },
         async createVenue({ commit }, venueDetails) {
