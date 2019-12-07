@@ -10,13 +10,15 @@ import Registration from "../views/Registration.vue";
 import NewSport from "../views/NewSport.vue";
 import NewVenue from "../views/NewVenue.vue";
 import SportEvent from "../views/SportEvent.vue";
-import Login from "@/components/Login"
+import Login from "../components/login.vue"
+import Dashboard from "../components/dashboard.vue"
+
 
 Vue.use(VueRouter);
 
 const routes = [
     {
-        path: "/",
+        path: "/home",
         name: "home",
         component: Home
     },
@@ -77,7 +79,12 @@ const routes = [
         path: "/",
         name: "Login",
         component: Login
-      }
+    },
+    {
+        path: "/dashboard",
+        name: "Dashboard",
+        component: Dashboard
+    }
 ];
 
 const router = new VueRouter({
