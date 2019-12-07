@@ -6,8 +6,9 @@
       <router-link to="/sport">Sport</router-link>|
       <router-link to="/venue">Venue</router-link>|
       <router-link to="/registration">Registration</router-link>|
-      <router-link to="/add/sport">Add sport</router-link>|
-      <router-link to="/add/venue">Add venue</router-link>
+      <router-link to="/add/sport">Add sport</router-link>||
+      <router-link to="/add/venue">Add venue</router-link>|
+      <router-link to="/event">Sport Event</router-link>
 
     </nav>
     <router-view />

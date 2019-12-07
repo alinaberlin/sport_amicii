@@ -15,7 +15,14 @@ router.post("/", async (req, res) => {
     const event = await SportEventService.add(req.body);
     res.send(event);
 });
-
+router.get("/all", async (req, res) => {
+    const events = await SportEventService.findAll();
+    res.render("event", { events: events });
+});
+router.get("/all/json", async (req, res) => {
+    const events = await SportEventService.findAll();
+    res.send(events);
+});
 router.get("/:id", async (req, res) => {
     const id = req.params.id;
     const event = await SportEventService.find(id);
