@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const SportService = require("../services/sport-service");
+const ensureLogin = require("connect-ensure-login");
 
 router.post("/", async (req, res) => {
     const sport = await SportService.add(req.body);
@@ -13,6 +14,10 @@ router.get("/all", async (req, res) => {
 });
 
 router.get("/all/json", async (req, res) => {
+    if (!req.isAuthenticated()) {
+        res.status(401).send({ message: "Unauthenticated" });
+        return;
+    }
     const sports = await SportService.findAll();
     res.send(sports);
 });
@@ -27,5 +32,7 @@ router.delete("/:id", async (req, res) => {
     await SportService.del(req.params.id);
     res.send("ok");
 });
-
+router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
+    res.render("private", { user: req.user });
+});
 module.exports = router;

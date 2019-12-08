@@ -10,11 +10,12 @@ import Registration from "../views/Registration.vue";
 import NewSport from "../views/NewSport.vue";
 import NewVenue from "../views/NewVenue.vue";
 import SportEvent from "../views/SportEvent.vue";
-import Login from "../components/login.vue"
-import Dashboard from "../components/dashboard.vue"
-
+import Login from "../components/login.vue";
+import Dashboard from "../components/dashboard.vue";
+import VueCookies from "vue-cookies";
 
 Vue.use(VueRouter);
+Vue.use(VueCookies);
 
 const routes = [
     {
@@ -63,7 +64,7 @@ const routes = [
         component: NewVenue
     },
     {
-        path: "/event/",
+        path: "/event",
         name: "sport-event",
         component: SportEvent
     },

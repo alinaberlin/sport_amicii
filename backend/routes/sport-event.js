@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const SportEventService = require("../services/sport-event-service");
 const UserService = require("../services/user-service");
+const ensureLogin = require("connect-ensure-login");
+
 
 router.post("/participate/:eventId/:userId", async (req, res) => {
     const user = await UserService.find(req.params.userId);
@@ -33,5 +35,7 @@ router.delete("/:id", async (req, res) => {
     await SportEventService.del(req.params.id);
     res.send("ok");
 });
-
+router.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
+    res.render("private", { user: req.user });
+  });
 module.exports = router;
