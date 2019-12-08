@@ -14,7 +14,7 @@ export default {
  article.card
   img(:src="`https://picsum.photos/300/200?random=${sport._id}`" alt="sport picture")
   h2.card-title 
-    router-link(:to="sportUrl") {{sport.name}}
+    router-link(:to="sportUrl") {{sport.name}}{{sport.minAttendee}}
 </template>
 
 <style scoped>
