@@ -10,7 +10,6 @@ export default {
 <template>
     <div id="app">
         <nav class="navbar navbar-expand-sm bg-light navbar-light">
-            <a class="navbar-brand" href="#">Sport Amicii</a>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <router-link to="/about" class="nav-link">About</router-link>
@@ -31,6 +30,8 @@ export default {
                     <router-link class="nav-link" to="/registration">Registration</router-link>
                 </li>
             </ul>
+                        <a class="navbar-brand ml-auto" href="#">Sport Amicii</a>
+
         </nav>
 
         <div v-if="$route.name != 'about'" class="container">
@@ -62,5 +63,8 @@ export default {
 
 #nav a.router-link-exact-active {
     color: #42b983;
+}
+.navbar-brand{
+ text-align: right!important;
 }
 </style>
