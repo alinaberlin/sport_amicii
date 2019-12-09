@@ -2,7 +2,7 @@
 <script>
 export default {
   name: "SportEventCard",
-  props: ["sportEvent"],
+  props: ["sportEvent", "currentUser"],
   computed: {
     sportEventUrl() {
       return `event/${this.sportEvent._id}`;
@@ -12,19 +12,18 @@ export default {
 </script>
 
 <template lang="pug">
- article.card
-  img(:src="`https://picsum.photos/300/200?random=${sportEvent._id}`" alt="sportEvent picture")
-  h2.card-title 
-    router-link(:to="sportEventUrl") {{sportEvent.date}}
+  tr
+    td
+      img(:src="`${sportEvent.sport.img}`" alt="sportEvent picture" height="42" width="42")
+    td
+      router-link(:to="sportEventUrl") {{sportEvent.title}}
+    td {{sportEvent.venue.name}}
+    td {{sportEvent.maxNumber}}
+    td {{sportEvent.date}}
+    td 
+      router-link(v-if="!sportEvent.participants.includes(currentUser._id)" :to="`/event/${sportEvent._id}/user/${currentUser._id}/join`") Join
+      p(v-if="sportEvent.participants.includes(currentUser._id)") You joined this event
 </template>
 
 <style scoped>
-.card {
-  display: inline-block;
-  text-align: left;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  margin: 20px;
-}
 </style>

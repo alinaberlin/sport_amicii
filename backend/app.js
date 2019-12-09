@@ -13,7 +13,7 @@ const loginRouter = require("./routes/login");
 const app = express();
 app.use(
     cors({
-        origin: "http://localhost:8080",
+        origin: process.env.VUE_APP_URL || "http://localhost:8080",
         credentials: true,
         allowedHeaders: ["Content-Type", "Set-Cookie"],
         exposedHeaders: ["Content-Type", "Set-Cookie"]

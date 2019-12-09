@@ -14,10 +14,6 @@ router.get("/all", async (req, res) => {
 });
 
 router.get("/all/json", async (req, res) => {
-    if (!req.isAuthenticated()) {
-        res.status(401).send({ message: "Unauthenticated" });
-        return;
-    }
     const sports = await SportService.findAll();
     res.send(sports);
 });
