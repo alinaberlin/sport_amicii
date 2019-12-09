@@ -91,10 +91,6 @@ export default new Vuex.Store({
             commit("SET_USER", result.data);
         },
         async fetchSports({ commit }) {
-            if (!this.state.currentUser) {
-                router.push("/login");
-                return;
-            }
             const result = await transport.get(`${apiUrl}/sport/all/json`);
             commit("SET_SPORTS", result.data);
         },
