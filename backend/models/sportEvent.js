@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const SportEventSchema = new mongoose.Schema({
+    title: String,
     date: Date,
     maxNumber: Number,
     venue: { type: mongoose.SchemaTypes.ObjectId, ref: "Venue" },

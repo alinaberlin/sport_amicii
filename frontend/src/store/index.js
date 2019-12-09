@@ -20,7 +20,9 @@ export default new Vuex.Store({
         userDetails: {},
         sportDetails: {},
         venueDetails: {},
-        sportEvents: []
+        sportEvents: [],
+        sportEvent: {},
+        currentUser: undefined
     },
     mutations: {
         SET_COUNTER(state, newCount) {
@@ -55,6 +57,15 @@ export default new Vuex.Store({
         },
         SET_SPORT_EVENTS(state, data) {
             state.sportEvents = data;
+        },
+        GET_SPORT_EVENT(state, data) {
+            state.sportEvent = data;
+        },
+        SET_CURRENT_USER(state, data) {
+            state.currentUser = data;
+        },
+        SET_SPORT_EVENT(state, data) {
+            state.sportEvent = data;
         }
     },
     actions: {
@@ -95,6 +106,7 @@ export default new Vuex.Store({
             this.state.userDetails = userDetails;
             const result = await transport.post(`${apiUrl}/user`, this.state.userDetails);
             commit("SAVE_NEW_USER", result.data);
+            router.push("/login");
         },
         async createSport({ commit }, sportDetails) {
             this.state.sportDetails = sportDetails;
@@ -109,6 +121,35 @@ export default new Vuex.Store({
         async fetchSportEvents({ commit }) {
             const result = await transport.get(`${apiUrl}/event/all/json`);
             commit("SET_SPORT_EVENTS", result.data);
+        },
+        async saveSportEvents({ commit }, event) {
+            const result = await transport.post(`${apiUrl}/event`, event);
+            commit("SET_SPORT_EVENT", result.data);
+        },
+        async fetchSportEvent({ commit }, id) {
+            const result = await transport.get(`${apiUrl}/event/${id}`, event);
+            commit("GET_SPORT_EVENT", result.data);
+        },
+        async joinSportEvent({ commit }, { eventId, userId }) {
+            console.log("Join sport events", eventId, userId);
+            const result = await transport.post(`${apiUrl}/event/participate/${eventId}/${userId}`);
+            commit("GET_SPORT_EVENT", result.data);
+        },
+        async fetchMyEvents({ commit }) {
+            const result = await transport.get(`${apiUrl}/event/all/json`);
+            const data = result.data.filter(e => e.participants.includes(this.state.currentUser._id));
+            console.log("My events are", data);
+            commit("SET_SPORT_EVENTS", data);
+        },
+        async login({ commit }, loginData) {
+            try {
+                const result = await transport.post(`${apiUrl}/api/login`, loginData);
+                commit("SET_CURRENT_USER", result.data);
+                router.push("/myevents");
+            } catch (e) {
+                commit("SET_CURRENT_USER", undefined);
+                console.error("Invalid login data", e);
+            }
         }
     },
     modules: {}

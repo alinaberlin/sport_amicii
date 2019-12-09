@@ -1,39 +1,63 @@
+<script>
+import { mapState, mapActions } from "vuex";
+export default {
+    name: "Main",
+    computed: {
+        ...mapState(["currentUser"])
+    }
+};
+</script>
 <template>
-  <div id="app">
-    <nav id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>|
-      <router-link to="/sport">Sport</router-link>|
-      <router-link to="/venue">Venue</router-link>|
-      <router-link to="/registration">Registration</router-link>|
-      <router-link to="/add/sport">Add sport</router-link>||
-      <router-link to="/add/venue">Add venue</router-link>|
-      <router-link to="/event">Sport Event</router-link>
+    <div id="app">
+        <nav class="navbar navbar-expand-sm bg-light navbar-light">
+            <a class="navbar-brand" href="#">Sport Amicii</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <router-link to="/about" class="nav-link">About</router-link>
+                </li>
+                <li class="nav-item" v-if="currentUser">
+                    <router-link class="nav-link" to="/event">Events</router-link>
+                </li>
+                <li class="nav-item" v-if="currentUser">
+                    <router-link class="nav-link" to="/myevents">My Events</router-link>
+                </li>
+                <li class="nav-item" v-if="currentUser">
+                    <router-link class="nav-link" to="/sport">Sports</router-link>
+                </li>
+                <li class="nav-item" v-if="!currentUser">
+                    <router-link class="nav-link" to="/">Login</router-link>
+                </li>
+                <li class="nav-item" v-if="!currentUser">
+                    <router-link class="nav-link" to="/registration">Registration</router-link>
+                </li>
+            </ul>
+        </nav>
 
-    </nav>
-    <router-view />
-  </div>
+        <div class="container">
+            <router-view />
+        </div>
+    </div>
 </template>
 
 <style>
 #app {
-  font-family: "Gupter", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+    font-family: "Gupter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
 }
 
 #nav {
-  padding: 30px;
+    padding: 30px;
 }
 
 #nav a {
-  font-weight: bold;
-  color: #2c3e50;
+    font-weight: bold;
+    color: #2c3e50;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+    color: #42b983;
 }
 </style>

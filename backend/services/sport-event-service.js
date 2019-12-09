@@ -12,6 +12,14 @@ class SportEventService extends BaseService {
         }
         return await event.save();
     }
+
+    async find(itemId) {
+        return this.model.findById(itemId).populate("sport").populate("venue").populate("participants");
+    }
+
+    async findAll() {
+        return this.model.find().populate("sport").populate("venue");
+    }
 }
 
 module.exports = new SportEventService();

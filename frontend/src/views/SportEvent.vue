@@ -1,22 +1,26 @@
 <script>
 // @ is an alias to /src
-import SportEventCard from "@/components/sportEvent-card.vue";
+import EventCard from "@/components/event-card.vue";
 import { mapState, mapActions } from "vuex";
-import SportCard from "@/components/sport-card.vue";
 
 export default {
-  name: "SportEvent",
+  name: "Sport Event",
   components: {
-    SportEventCard
+    EventCard
   },
   computed: {
-    ...mapState(["sportEvents"])
+    ...mapState(["sportEvent"])
   },
   methods: {
-    ...mapActions(["fetchSportEvents"])
+    ...mapActions(["fetchSportEvent", "joinSportEvent"])
   },
   created() {
-    this.fetchSportEvents();
+    if (this.$route.params.id) {
+        this.fetchSportEvent(this.$route.params.id);
+    } else {
+        console.log("Route params", this.$route.params)
+        this.joinSportEvent(this.$route.params);
+    }
   }
 };
 </script>
@@ -24,7 +28,9 @@ export default {
 <template lang="pug">
 main
   section
-  sportEvent-card(v-for="sportEvent in sportEvents", :sportEvent= 'sportEvent') 
+  event-card(:sportEvent="sportEvent")
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

@@ -14,10 +14,10 @@ export default {
       {
         title: "Slide #2",
         content: "Slide content 2.",
-        image: "/images/women.jpeg"
+        image: "/images/women.png"
       },
       {
-        title: "LoginIn",
+        title: "<h1 class='magic'>Sign In Today</h1>",
         content: "<div class='arrows'></div>",
         image: "/images/run.jpeg"
       }
@@ -53,18 +53,14 @@ export default {
 }
 
 .vueperslide {
-  & __title {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-    opacity: 0.7;
-  }
 }
-
-// documentation link.
+.magic{
+    color:pink;
+}
 p {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 15px;
+  right: 15px;
   z-index: 10;
 }
 

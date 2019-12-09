@@ -12,9 +12,9 @@ export default {
 
 <template lang="pug">
  article.card
-  img(:src="`https://picsum.photos/300/200?random=${sport._id}`" alt="sport picture")
+  img(:src="`${sport.img}`" alt="sport picture" height="42" width="42")
   h2.card-title 
-    router-link(:to="sportUrl") {{sport.name}}{{sport.minAttendee}}
+    router-link(:to="sportUrl") {{sport.name}}
 </template>
 
 <style scoped>

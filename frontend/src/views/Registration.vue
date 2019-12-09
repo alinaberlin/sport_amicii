@@ -19,8 +19,8 @@ export default {
     methods: {
         ...mapActions(["createUser", "fetchSports"]),
         saveUser() {
-            const { firstName, lastName, email, password, location,selectedSports } = this;
-            this.createUser({ firstName, lastName, email, password, location,selectedSports });
+            const { firstName, secondName, email, password, location,selectedSports } = this;
+            this.createUser({ firstName, secondName, email, password, location, sports: selectedSports });
         }
     },
     created() {
@@ -32,21 +32,26 @@ export default {
 <template lang="pug">
 main
   h2 Register here
-  p First name
-  input(type="text" v-model="firstName" placeholder="user name")
-  p Last name
-  input(type="text" v-model="lastName" placeholder="last name")
-  p Email
-  input(type="text" v-model="email" placeholder="email")
-  p Location
-  input(type="text" v-model="location" placeholder="location")
-  p Password
-  input(type="password" v-model="password" placeholder="password")
-  p
-  select(multiple v-model="selectedSports")  
-     option(v-for="sport in sports", :value= 'sport._id') {{sport.name}}
-  p
-  button.post-user-button(@click="saveUser()") Register
+  div(class="form-group")
+    label(for="firstName") First name
+    input(type="text" v-model="firstName" placeholder="first name" name="firstName" class="form-control")
+  div(class="form-group")
+    label(for="lastName") Last name
+    input(type="text" v-model="secondName" placeholder="last name" name="lastName" class="form-control")
+  div(class="form-group")
+    label(for="email") Email
+    input(type="email" v-model="email" placeholder="email" class="form-control") 
+  div(class="form-group")
+    label(for="location") Location
+    input(type="text" v-model="location" placeholder="location" name="location" class="form-control")
+  div(class="form-group")  
+    label(for="password") Password
+    input(type="password" v-model="password" placeholder="password" name="password" class="form-control")
+  div(class="form-group")
+    label(for="sports") Sports     
+    select(multiple v-model="selectedSports" name="sports" class="form-control")  
+      option(v-for="sport in sports", :value= 'sport._id') {{sport.name}}
+  button.post-user-button(@click="saveUser()" class="btn btn-primary") Register
   div
 </template>
 

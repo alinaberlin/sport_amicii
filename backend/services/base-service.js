@@ -15,7 +15,7 @@ module.exports = class Service {
         return this.model.deleteOne({ _id: itemId });
     }
 
-    async find(itemId = 1) {
+    async find(itemId) {
         return this.model.findById(itemId);
     }
 };
