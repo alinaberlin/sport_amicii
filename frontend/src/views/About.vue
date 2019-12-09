@@ -54,8 +54,8 @@ export default {
 
 .vueperslide {
 }
-.magic{
-    color:pink;
+.magic {
+  color: pink;
 }
 p {
   position: absolute;
