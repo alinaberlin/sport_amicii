@@ -15,6 +15,7 @@ import NewSportEvent from "../views/NewSportEvent.vue";
 import Login from "../views/Login.vue";
 import MyEvents from "../views/MyEvents.vue";
 import VueCookies from "vue-cookies";
+import MapEvents from "../views/MapEvents.vue";
 
 Vue.use(VueRouter);
 Vue.use(VueCookies);
@@ -107,6 +108,11 @@ const routes = [
         path: "/event/:eventId/user/:userId/join",
         name: "JoinEvent",
         component: SportEvent
+    },
+    {
+        path: "/map/events",
+        name: "Events Map",
+        component: MapEvents
     }
 ];
 

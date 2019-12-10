@@ -143,10 +143,6 @@ export default new Vuex.Store({
             commit("SAVE_NEW_VENUE", result.data);
         },
         async fetchSportEvents({ commit }) {
-            if (!this.state.currentUser) {
-                router.push("/login");
-                return;
-            }
             const result = await transport.get(`${apiUrl}/event/all/json`);
             commit("SET_SPORT_EVENTS", result.data);
         },

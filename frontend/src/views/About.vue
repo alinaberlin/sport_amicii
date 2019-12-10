@@ -2,24 +2,23 @@
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 
+
 export default {
     components: { VueperSlides, VueperSlide },
     data: () => ({
         slides: [
             {
-                title: "Slide #1",
-                content: "Slide content.",
+                content: "<h3>We know is hard sometime to team up and practice sport</h3>.",
                 image: "/images/football.jpeg"
             },
             {
-                title: "Slide #2",
-                content: "Slide content 2.",
-                image: "/images/women.png"
+                content: "<div><h3>but what about an app who can help you to find your mate and have fun playing football</h3></br><h3>or tennis or... you name it, in nice location for which you can split the cost</h3></div>",
+                image: "/images/playing.jpeg"
             },
             {
                 title: "<h1 class='magic'>Sign In Today</h1>",
                 content: "<div class='arrows'></div>",
-                image: "/images/run.jpeg"
+                image: "/images/running.jpeg"
             }
         ]
     })
@@ -33,23 +32,33 @@ export default {
             </vueper-slides>
         </div>
         <div id="description">
-            <h1>We know is hard sometime to team up and practice sport</h1>
-            <h2>but what about an app who can help you to find your mate and have fun playing football</h2>
-            <h2>or tennis or... you name it, in nice location for which you can split the cost</h2>
-            <h3>So! What you waiting. JuSt SiGn In!</h3>
+            
+            
+            <h1>So! What you are waiting</h1> 
+            <h2>
+              <span>S</span>
+              <span>i</span>
+              <span>g</span>
+              <span>n</span><br>
+              <span>up</span>
+              </h2>
         </div>
-    </div>
+        </div>
+        
 </template>
 
 <style>
 #description {
-    background: #e73c7e;
+color:chartreuse
+}
+h3{
+  color:brown
 }
 
 .vueperslide {
 }
 .magic {
-    color: pink;
+    color:red;
 }
 
 /*html {
@@ -115,4 +124,70 @@ export default {
         transform: translate(-13.33333px, 53.33333px) rotate(-45deg);
     }
 }
+
+
+::selection {
+  background: transparent;
+}
+
+/* JUMP */
+h2 {
+  cursor: default;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+h2 span {
+  position: relative;
+  top: 20px;
+  display: inline-block;
+  -webkit-animation: bounce 0.3s ease infinite alternate;
+  font-size: 80px;
+  color: #fff;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+    0 5px 0 #ccc, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent,
+    0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+h2 span:nth-child(1) {
+  -webkit-animation-delay: 0.1s;
+}
+
+h2 span:nth-child(2) {
+  -webkit-animation-delay: 0.2s;
+}
+
+h2 span:nth-child(3) {
+  -webkit-animation-delay: 0.3s;
+}
+
+h2 span:nth-child(4) {
+  -webkit-animation-delay: 0.4s;
+}
+
+h2 span:nth-child(5) {
+  -webkit-animation-delay: 0.5s;
+}
+
+
+
+
+/* ANIMATION */
+@-webkit-keyframes bounce {
+  100% {
+    top: -20px;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc,
+      0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc,
+      0 50px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
 </style>
