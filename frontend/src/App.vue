@@ -29,6 +29,10 @@ export default {
                 <li class="nav-item" v-if="!currentUser">
                     <router-link class="nav-link" to="/registration">Registration</router-link>
                 </li>
+                <li class="nav-item" v-if="currentUser">
+                 <a class="nav-link" href="/login">Logout</a>
+                </li>
+
             </ul>
                         <a class="navbar-brand ml-auto" href="#">Sport Amicii</a>
 
@@ -51,16 +55,13 @@ export default {
     text-align: center;
     color: #2c3e50;
 }
-
 #nav {
     padding: 30px;
 }
-
 #nav a {
     font-weight: bold;
     color: #2c3e50;
 }
-
 #nav a.router-link-exact-active {
     color: #42b983;
 }

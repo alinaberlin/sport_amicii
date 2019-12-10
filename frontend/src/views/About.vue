@@ -16,7 +16,7 @@ export default {
                 image: "/images/playing.jpeg"
             },
             {
-                title: "<h1 class='magic'>Sign In Today</h1>",
+                title: "<h1 class='magic'>Sign In, Today</h1>",
                 content: "<div class='arrows'></div>",
                 image: "/images/running.jpeg"
             }
